@@ -3,7 +3,7 @@ package io.nlsltz.demos.BlockchainExample;
 public class Blockchain {
     /* Blochcain parameters and configuration */
     private final int blockSize = 5;
-    private ArrayList<Block> blockchain;
+    private ArrayList<Block> blockChain;
 
     /* Additions for cryptocurrency
     private final int maxSupply = 1000;
@@ -15,37 +15,40 @@ public class Blockchain {
      * Constructor
      */
     public Blockchain() {
-        this.blockchain = new ArrayList<Block>();
+        this.blockChain = new ArrayList<Block>();
     }
 
     /**
-     * Initializes the blockchain
+     * Initializes the blockChain
      * 
-     * @return Block returns the last block in the chain, here genesis block
+     * @return returns the last block in the chain, here genesis block
      */
     public Block init() {
         ArrayList<String> blockData = new ArrayList<>(blockSize);
         Block genesisBlock = new Block(0, blockData);
 
-        this.blockchain.add(genesis);
+        this.blockChain.add(genesis);
 
-        return this.blockchain.get(this.blockchain.size() - 1);
+        return this.blockChain.get(this.blockChain.size() - 1);
     }
 
     /**
      * Adds a block to the chain
      * 
-     * @param newBlock the Block which is to be added to the chain
+     * @param newBlock Block which is to be added to the chain
      * 
-     * @return Block returns the last block in the chain, here genesis block
+     * @return the last block in the chain, here genesis block
      */
     public Block addBlock(Block newBlock) {
         /* Check previousHash if valid add new block */
-        Block actualBlock = this.blockchain.get(this.blockchain.size() - 1);
+        Block actualBlock = this.blockChain.get(this.blockChain.size() - 1);
+        
         if (newBlock.getPreviousBlockhash() == actualBlock.getBlockHash()) {
-            this.blockchain.add(newBlock);
+            this.blockChain.add(newBlock);
+            return this.blockChain.get(this.blockChain.size() - 1);
         } else {
             /* reject Block and Logging */
+            return this.blockChain.get(this.blockChain.size() - 1);
         }
     }
 
@@ -53,9 +56,10 @@ public class Blockchain {
      * Displays the current chain state
      */
     public void displayBlocks() {
-        System.out.println("Display current blockchain state...");
+        System.out.println("Display current blockChain state...");
         System.out.println("(Simple printing block by block to stdout)");
-        for (Block block : this.blockchain) {
+        
+        for (Block block : this.blockChain) {
             System.out.println("Blockhash: %s", block.getBlockHash());
             System.out.println("Previous Blockhash: %s", block.getPreviousBlockhash());
             System.out.println("Blockdata: ");
