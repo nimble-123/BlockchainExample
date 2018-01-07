@@ -1,5 +1,8 @@
 package io.nlsltz.demos.BlockchainExample;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Blockchain {
     /* Blochcain parameters and configuration */
     private final int blockSize = 5;
@@ -25,9 +28,15 @@ public class Blockchain {
      */
     public Block init() {
         ArrayList<String> blockData = new ArrayList<>(blockSize);
+        blockData.add("{"
+            + "'Type: 'Balances',"
+            + "'Currency': 'Bitcoin',"
+            + "'CurrencyCode': 'BTC',"
+            + "'Timestamp': '1234567890'"
+        + "}");
         Block genesisBlock = new Block(0, blockData);
 
-        this.blockChain.add(genesis);
+        this.blockChain.add(genesisBlock);
 
         return this.blockChain.get(this.blockChain.size() - 1);
     }
@@ -56,17 +65,22 @@ public class Blockchain {
      * Displays the current chain state
      */
     public void displayBlocks() {
-        System.out.println("Display current blockChain state...");
-        System.out.println("(Simple printing block by block to stdout)");
+    	System.out.println(new Date() + " **********************************");
+        
+    	System.out.println("Display current blockChain state...");
+        System.out.println("(Simple printing block by block to stdout)\n");
         
         for (Block block : this.blockChain) {
-            System.out.println("Blockhash: %s", block.getBlockHash());
-            System.out.println("Previous Blockhash: %s", block.getPreviousBlockhash());
-            System.out.println("Blockdata: ");
+        	System.out.printf("Previous Blockhash: %d\n", block.getPreviousBlockhash());
+            System.out.printf("Blockhash: %d\n", block.getBlockHash());
+            System.out.println("Blockdata start ");
             for (String item : block.getBlockData()) {
-                System.out.println("|-Item: %s", item);
+                System.out.printf("-Item: %s\n", item);
             }
+            System.out.println("Blockdata end \n\n");
         }
+        System.out.println("***************************************************************");
+        System.out.println();
     }
     
     /**
@@ -75,4 +89,8 @@ public class Blockchain {
     public int getBlockSize() {
         return blockSize;
     }
+
+	public Block getActualBlock() {
+		return this.blockChain.get(this.blockChain.size() - 1);
+	}
 }

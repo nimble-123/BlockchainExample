@@ -1,7 +1,6 @@
 package io.nlsltz.demos.BlockchainExample;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 /**
  * Created by nlsltz.
