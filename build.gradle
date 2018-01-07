@@ -1,0 +1,23 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'io.nlsltz.demos.BlockchainExample.Main'
+
+// tag::repositories[]
+// end::repositories[]
+
+// tag::jar[]
+jar {
+    baseName = 'blockchainExample'
+    version =  '0.1.0'
+}
+// end::jar[]
+
+// tag::dependencies[]
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+// end::dependencies[]
+
+
+// tag::wrapper[]
+// end::wrapper[]
