@@ -53,7 +53,16 @@ public class Blockchain {
      * Displays the current chain state
      */
     public void displayBlocks() {
-
+        System.out.println("Display current blockchain state...");
+        System.out.println("(Simple printing block by block to stdout)");
+        for (Block block : this.blockchain) {
+            System.out.println("Blockhash: %s", block.getBlockHash());
+            System.out.println("Previous Blockhash: %s", block.getPreviousBlockhash());
+            System.out.println("Blockdata: ");
+            for (String item : block.getBlockData()) {
+                System.out.println("|-Item: %s", item);
+            }
+        }
     }
     
     /**
