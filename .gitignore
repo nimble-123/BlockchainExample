@@ -452,3 +452,6 @@ ASALocalRun/
 .vscode/
 .classpath
 .project
+.gradle/
+bin/
+build/

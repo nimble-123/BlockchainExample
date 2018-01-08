@@ -1,15 +1,12 @@
 apply plugin: 'java'
-apply plugin: 'application'
-
-mainClassName = 'io.nlsltz.demos.BlockchainExample.Main'
-
-// tag::repositories[]
-// end::repositories[]
 
 // tag::jar[]
 jar {
     baseName = 'blockchainExample'
     version =  '0.1.0'
+    manifest {
+        attributes 'Main-Class': 'io.nlsltz.demos.BlockchainExample.Main'
+    }
 }
 // end::jar[]
 
