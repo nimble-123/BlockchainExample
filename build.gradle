@@ -1,13 +1,8 @@
 apply plugin: 'java'
+apply plugin: 'application'
 
 // tag::jar[]
-jar {
-    baseName = 'blockchainExample'
-    version =  '0.1.0'
-    manifest {
-        attributes 'Main-Class': 'io.nlsltz.demos.BlockchainExample.Main'
-    }
-}
+mainClassName = 'io.nlsltz.demos.BlockchainExample.Main'
 // end::jar[]
 
 // tag::dependencies[]

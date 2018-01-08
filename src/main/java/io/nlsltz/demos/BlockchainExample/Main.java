@@ -8,7 +8,6 @@ public class Main {
         Not decentralized, therefor no consensus algorithm implemented
         (c) Nils Lutz 2018
      */
-
     public static void main(String[] args) {
         
         /* Create Initial Blockchain */
